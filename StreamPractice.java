@@ -1,9 +1,13 @@
 package BasicPractice;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StreamPractice {
@@ -70,5 +74,38 @@ public class StreamPractice {
 
         long alt = resultMap.getOrDefault(15000, 0L);
         System.out.println(alt);
+        
+        
+        List<Integer> integers = new ArrayList<>();
+        integers.add(1);
+        integers.add(2);
+        integers.add(3);
+        integers.add(1);
+        integers.add(2);
+        
+        Set<Integer> setResult = integers.stream().collect(Collectors.toSet());
+        System.out.println(setResult);
+        
+        Set<Integer> setresultnew = new HashSet<>();
+        for(Integer a : integers) {
+        	setresultnew.add(a);
+        }
+        
+        System.out.println(setresultnew);
+        
+        List<Integer> unordered =  new ArrayList<>();
+        unordered.add(7000);
+        unordered.add(1000);
+        unordered.add(5000);
+        unordered.add(500);
+        
+        System.out.println(unordered);
+        
+        List<Integer> sortednum = unordered.stream().sorted().collect(Collectors.toList());
+        System.out.println(sortednum);
+        
+        
+        List<Integer> sortednum1 = unordered.stream().sorted(Collections.reverseOrder()).collect(Collectors.toList());
+        System.out.println(sortednum1);
     }
 }
